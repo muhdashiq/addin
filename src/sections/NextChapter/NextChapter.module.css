@@ -1,0 +1,74 @@
+.next {
+  overflow: clip;
+  min-height: 130svh;
+  isolation: isolate;
+}
+
+/* Oversized, so the canvas edge stays off-screen at the start of the scale-up. */
+.network {
+  position: absolute;
+  inset: -6%;
+  z-index: -1;
+}
+
+/*
+ * A soft pool of night behind the text, so the glow can't fight the words for contrast.
+ * closest-side makes the gradient reach zero exactly at the box edge, which leaves no visible edge.
+ */
+.copy::before,
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: -22% -30%;
+  z-index: -1;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--surface) 90%, transparent) 62%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.copy {
+  position: relative;
+  isolation: isolate;
+  max-width: 44rem;
+}
+
+.numeral {
+  display: block;
+  margin-block-end: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-numeral);
+  font-weight: 900;
+  font-variation-settings: var(--display-axes);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--accent-2);
+}
+
+.copy h2 {
+  font-size: var(--fs-h2);
+}
+
+.paragraphs {
+  display: grid;
+  gap: var(--space-4);
+  margin-block-start: var(--space-5);
+  font-size: var(--fs-lead);
+  line-height: 1.4;
+}
+
+.closing {
+  position: relative;
+  max-width: 18ch;
+  margin-block-start: clamp(5rem, 22vh, 14rem);
+  margin-inline-start: auto;
+  isolation: isolate;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}

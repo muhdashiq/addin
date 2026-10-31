@@ -1,0 +1,55 @@
+/* One button whose whole look comes from the current era's tokens. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: 0.6em 1.25em;
+  border: var(--btn-border);
+  border-radius: var(--btn-radius);
+  background: var(--btn-bg);
+  box-shadow: var(--btn-shadow);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--btn-weight);
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    filter 160ms var(--ease-out),
+    scale 160ms var(--ease-out);
+}
+
+.button:hover {
+  filter: brightness(1.06);
+}
+
+.button:active {
+  background: var(--btn-bg-active);
+  color: var(--btn-fg-active);
+  scale: 0.97;
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.quiet {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid var(--rule-strong);
+  color: var(--text);
+  border-radius: var(--btn-radius);
+  font-size: var(--fs-small);
+  min-height: 2.5rem;
+  padding: 0.4em 0.9em;
+  font-weight: 500;
+}
+
+.quiet:active {
+  background: var(--rule);
+  color: var(--text);
+}

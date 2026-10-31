@@ -1,0 +1,37 @@
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.body,
+.bite,
+.rays {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 420ms var(--ease-out),
+    opacity 240ms linear;
+}
+
+.rays {
+  transform-box: view-box;
+}
+
+[data-theme-state='dark'] .body {
+  transform: scale(1.5);
+}
+
+[data-theme-state='dark'] .bite {
+  transform: translate(-9px, 3px);
+}
+
+[data-theme-state='dark'] .rays {
+  transform: rotate(40deg) scale(0.4);
+  opacity: 0;
+}

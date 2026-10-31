@@ -1,0 +1,82 @@
+.cursor {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms linear;
+}
+
+.cursor[data-visible='true'] {
+  opacity: 1;
+}
+
+.cursor[data-hidden='true'] {
+  opacity: 0;
+}
+
+.ringAnchor,
+.dotAnchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+.dot,
+.ring {
+  position: absolute;
+  translate: -50% -50%;
+  border-radius: 50%;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: var(--c-husk);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 40%);
+}
+
+.ring {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--c-husk);
+  transition:
+    width 240ms var(--ease-out),
+    height 240ms var(--ease-out),
+    background-color 240ms var(--ease-out),
+    border-color 240ms var(--ease-out);
+}
+
+.label {
+  color: #1b1b1f;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 160ms linear;
+  white-space: nowrap;
+}
+
+.cursor[data-state='hover'] .ring {
+  width: 54px;
+  height: 54px;
+  border-color: var(--c-cyan);
+}
+
+.cursor[data-state='label'] .ring {
+  width: 72px;
+  height: 72px;
+  border-color: var(--c-husk);
+  background: var(--c-husk);
+}
+
+.cursor[data-state='label'] .label {
+  opacity: 1;
+}
+
+.cursor[data-state='label'] .dot {
+  opacity: 0;
+}

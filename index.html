@@ -1,5 +1,85 @@
-<html>
-<body>
-  Testing
-</body>
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Addin.in: every small business deserves to be found online</title>
+    <meta
+      name="description"
+      content="The story of Addin.in, a college-born, self-funded company from Kerala that brought small industries online between 2010 and 2013."
+    />
+    <meta name="theme-color" content="#f4ede1" />
+
+    <!-- If this site moves to its own domain, update these three URLs, robots.txt and sitemap.xml. -->
+    <link rel="canonical" href="https://muhdashiq.com/addin/" />
+    <meta property="og:url" content="https://muhdashiq.com/addin/" />
+    <meta property="og:image" content="https://muhdashiq.com/addin/og-image.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Addin.in: The Story" />
+    <meta
+      property="og:description"
+      content="Every small business deserves to be found online. A founder's story from Kerala, 2010 to 2013."
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Addin.in: The Story" />
+    <meta
+      name="twitter:description"
+      content="Every small business deserves to be found online. A founder's story from Kerala, 2010 to 2013."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400..700&display=swap"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400..700&display=swap"
+      />
+    </noscript>
+
+    <!-- Sets the theme before first paint, so dark-mode visitors never see a flash of paper. -->
+    <script>
+      (function () {
+        var theme = null;
+        try {
+          theme = window.localStorage.getItem('addin:theme');
+        } catch (error) {
+          theme = null;
+        }
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <style>
+      html {
+        background: #f4ede1;
+      }
+      html[data-theme='dark'] {
+        background: #1b1b1f;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <h1>Every small business deserves to be found online.</h1>
+      <p>
+        Addin.in was a college-born, self-funded company from Kerala, India (April 2010 to December
+        2013) that brought small-scale industries online. This page needs JavaScript to tell the
+        full story.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

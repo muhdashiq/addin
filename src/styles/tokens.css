@@ -1,0 +1,260 @@
+/*
+ * Design tokens.
+ *
+ * Two independent axes drive the story:
+ *   data-world  the material a section is made of: paper → hinge → dusk → screen → night
+ *   data-era    the age of the interface:          gingerbread (2010) → holo (2012) → modern
+ *
+ * Components only read the semantic tokens (--surface, --text, --btn-bg ...),
+ * so the theme, the eras and the retro skin can all restyle them from here.
+ */
+
+:root {
+  /* Palette from the brief */
+  --c-paper: #f4ede1;
+  --c-ink: #1b1b1f;
+  --c-backwater: #0f5c4c;
+  --c-husk: #c8862b;
+  --c-cyan: #22d3ee;
+  --c-violet: #7c3aed;
+
+  /* Period colours: Android 2.x green and press orange, Holo blue */
+  --c-android: #a4c639;
+  --c-press: #ff9900;
+  --c-holo: #33b5e5;
+
+  --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
+  --font-body: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --fs-small: clamp(0.875rem, 0.85rem + 0.12vw, 0.95rem);
+  --fs-body: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+  --fs-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+  --fs-h3: clamp(1.5rem, 1.2rem + 1.3vw, 2.5rem);
+  --fs-h2: clamp(2.5rem, 1.6rem + 4.2vw, 6rem);
+  --fs-display: clamp(2.875rem, 0.9rem + 8.2vw, 10rem);
+  --fs-numeral: clamp(4.5rem, 2rem + 11vw, 13rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.5rem;
+  --space-7: 4rem;
+  --space-8: 7rem;
+  --space-9: clamp(6rem, 12vw, 12rem);
+
+  --gutter: clamp(1rem, 4vw, 4.5rem);
+  --measure: 60ch;
+  --nav-height: 2.75rem;
+
+  --z-grain: 60;
+  --z-nav: 70;
+  --z-toast: 80;
+  --z-preloader: 90;
+  --z-cursor: 100;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* The surface of each world, readable from any other world for colour bleeds */
+  --w-paper: #f4ede1;
+  --w-hinge: #0f5c4c;
+  --w-dusk: #e9ebed;
+  --w-screen: #f3f5fc;
+  --w-night: #12122a;
+
+  --focus: #6d28d9;
+  --grid: transparent;
+  --grain-opacity: 0.1;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --w-paper: #1b1b1f;
+  --w-hinge: #0a3f35;
+  --w-dusk: #14151c;
+  --w-screen: #0d0f1e;
+  --w-night: #070814;
+  --grain-opacity: 0.08;
+}
+
+/* ---------- Worlds, light theme ---------- */
+
+:root,
+[data-world='paper'] {
+  --surface: var(--w-paper);
+  --surface-raised: #fbf6ec;
+  --text: #1b1b1f;
+  --text-muted: #57524a;
+  --accent: #0f5c4c;
+  --accent-2: #8a5a12;
+  --on-accent: #fbf6ec;
+  --rule: rgb(27 27 31 / 22%);
+  --rule-strong: rgb(27 27 31 / 70%);
+  --focus: #0f5c4c;
+  --grid: transparent;
+  --net-dim: #c9bfad;
+  --net-lit: #c8862b;
+  --net-lit-2: #0f5c4c;
+  --net-line: #0f5c4c;
+  --net-blend: normal;
+}
+
+[data-world='hinge'] {
+  --surface: var(--w-hinge);
+  --surface-raised: #0b4a3d;
+  --text: #f7f1e6;
+  --text-muted: #d2e2d9;
+  --accent: #f7c986;
+  --accent-2: #8fe6d4;
+  --on-accent: #1b1b1f;
+  --rule: rgb(247 241 230 / 28%);
+  --rule-strong: rgb(247 241 230 / 75%);
+  --focus: #f7c986;
+  --grid: transparent;
+}
+
+[data-world='dusk'] {
+  --surface: var(--w-dusk);
+  --surface-raised: #f6f7f8;
+  --text: #17181d;
+  --text-muted: #4c4f57;
+  --accent: #0e7490;
+  --accent-2: #8a5a12;
+  --on-accent: #ffffff;
+  --rule: rgb(23 24 29 / 20%);
+  --rule-strong: rgb(23 24 29 / 70%);
+  --focus: #0e7490;
+  --grid: transparent;
+}
+
+[data-world='screen'] {
+  --surface: var(--w-screen);
+  --surface-raised: #ffffff;
+  --text: #15162b;
+  --text-muted: #4a4d6a;
+  --accent: #6d28d9;
+  --accent-2: #0e7490;
+  --on-accent: #ffffff;
+  --rule: rgb(21 22 43 / 16%);
+  --rule-strong: rgb(21 22 43 / 65%);
+  --focus: #6d28d9;
+  --grid: rgb(109 40 217 / 6%);
+}
+
+[data-world='night'] {
+  --surface: var(--w-night);
+  --surface-raised: #1b1b3a;
+  --text: #eef0ff;
+  --text-muted: #bcc0e0;
+  --accent: #22d3ee;
+  --accent-2: #b9a3fb;
+  --on-accent: #070814;
+  --rule: rgb(238 240 255 / 22%);
+  --rule-strong: rgb(238 240 255 / 70%);
+  --focus: #22d3ee;
+  --grid: transparent;
+  --net-dim: #2d3163;
+  --net-lit: #22d3ee;
+  --net-lit-2: #a78bfa;
+  --net-line: #5b8cff;
+  --net-blend: add;
+}
+
+/* ---------- Worlds, dark theme ---------- */
+
+:root[data-theme='dark'],
+:root[data-theme='dark'] [data-world='paper'] {
+  --surface: var(--w-paper);
+  --surface-raised: #26262c;
+  --text: #f4ede1;
+  --text-muted: #c2baab;
+  --accent: #5ccdb4;
+  --accent-2: #e5a950;
+  --on-accent: #1b1b1f;
+  --rule: rgb(244 237 225 / 20%);
+  --rule-strong: rgb(244 237 225 / 70%);
+  --focus: #5ccdb4;
+  --net-dim: #4b4b53;
+  --net-lit: #e5a950;
+  --net-lit-2: #5ccdb4;
+  --net-line: #e5a950;
+  --net-blend: add;
+}
+
+:root[data-theme='dark'] [data-world='hinge'] {
+  --surface-raised: #0c4a3d;
+  --text: #f4ede1;
+  --text-muted: #c9dbd1;
+}
+
+:root[data-theme='dark'] [data-world='dusk'] {
+  --surface-raised: #1e1f29;
+  --text: #edeae3;
+  --text-muted: #b5b3ad;
+  --accent: #22d3ee;
+  --accent-2: #e5a950;
+  --on-accent: #070814;
+  --rule: rgb(237 234 227 / 20%);
+  --rule-strong: rgb(237 234 227 / 70%);
+  --focus: #22d3ee;
+}
+
+:root[data-theme='dark'] [data-world='screen'] {
+  --surface-raised: #171a30;
+  --text: #e8eafb;
+  --text-muted: #adb1d4;
+  --accent: #22d3ee;
+  --accent-2: #b9a3fb;
+  --on-accent: #070814;
+  --rule: rgb(232 234 251 / 18%);
+  --rule-strong: rgb(232 234 251 / 65%);
+  --focus: #22d3ee;
+  --grid: rgb(34 211 238 / 5%);
+}
+
+:root[data-theme='dark'] [data-world='night'] {
+  --surface-raised: #10122a;
+}
+
+/* ---------- Eras: buttons and type grow up as the story moves on ---------- */
+
+:root,
+[data-era='gingerbread'] {
+  --display-axes: 'SOFT' 100, 'WONK' 1;
+  --btn-bg: linear-gradient(#fbfbfb 0%, #e6e6e6 47%, #cfcfcf 53%, #e4e4e4 100%);
+  --btn-bg-active: linear-gradient(#ffc14d 0%, #ff9900 50%, #f08c00 51%, #ffb733 100%);
+  --btn-fg: #1b1b1f;
+  --btn-fg-active: #1b1b1f;
+  --btn-border: 1px solid #6f6b64;
+  --btn-radius: 7px;
+  --btn-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 90%), inset 0 -1px 0 rgb(0 0 0 / 12%),
+    0 2px 3px rgb(0 0 0 / 35%);
+  --btn-weight: 600;
+}
+
+[data-era='holo'] {
+  --display-axes: 'SOFT' 50, 'WONK' 0;
+  --btn-bg: transparent;
+  --btn-bg-active: rgb(51 181 229 / 30%);
+  --btn-fg: var(--text);
+  --btn-fg-active: var(--text);
+  --btn-border: 1px solid var(--rule-strong);
+  --btn-radius: 2px;
+  --btn-shadow: inset 0 -3px 0 var(--c-holo);
+  --btn-weight: 500;
+}
+
+[data-era='modern'] {
+  --display-axes: 'SOFT' 0, 'WONK' 0;
+  --btn-bg: var(--accent);
+  --btn-bg-active: var(--accent);
+  --btn-fg: var(--on-accent);
+  --btn-fg-active: var(--on-accent);
+  --btn-border: 1px solid transparent;
+  --btn-radius: 999px;
+  --btn-shadow: none;
+  --btn-weight: 600;
+}

@@ -1,0 +1,125 @@
+.motto {
+  overflow: clip;
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding-block: calc(var(--nav-height) + var(--space-5)) var(--space-5);
+}
+
+.numeral {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vh, 6.5rem);
+  font-weight: 900;
+  font-variation-settings: var(--display-axes);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--accent-2);
+  margin-block-end: var(--space-4);
+}
+
+.text {
+  /* Sized by viewport height as well, so all the words always fit one screen while pinned. */
+  font-size: min(clamp(3rem, 11.5vw, 13rem), 19svh);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-wrap: wrap;
+}
+
+.word {
+  position: relative;
+  display: inline-block;
+  transform-origin: left center;
+}
+
+/* Painting the fill over the stroke hides the overlapping contours inside variable-font letters. */
+.outline {
+  color: var(--surface);
+  -webkit-text-stroke: 0.036em var(--text);
+  paint-order: stroke fill;
+}
+
+/* The fill is a copy of the word on top. Scrubbing its clip-path sweeps the colour across. */
+.fill {
+  position: absolute;
+  inset: 0;
+  white-space: nowrap;
+  background-image: linear-gradient(95deg, var(--accent-2) -10%, var(--accent) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pillarsTitle {
+  margin-block: var(--space-7) var(--space-6);
+  font-size: var(--fs-h3);
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-5);
+  perspective: 1200px;
+}
+
+.pillarItem {
+  grid-column: span 4;
+}
+
+.pillarItem:nth-child(2) {
+  margin-block-start: var(--space-6);
+}
+
+.pillarItem:nth-child(3) {
+  margin-block-start: var(--space-7);
+}
+
+.pillar {
+  height: 100%;
+  padding: var(--space-5);
+  background: var(--surface-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: 5px 6px 0 var(--accent-2);
+}
+
+.pillar h4 {
+  margin-block-end: var(--space-3);
+  font-size: var(--fs-h3);
+}
+
+@media (max-width: 899.98px) {
+  .stage {
+    min-height: 80svh;
+  }
+
+  .text {
+    font-size: clamp(3rem, 15vw, 7rem);
+  }
+
+  .pillarItem {
+    grid-column: 1 / -1;
+  }
+
+  .pillarItem:nth-child(2),
+  .pillarItem:nth-child(3) {
+    margin-block-start: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No sweep will ever cover the outline, so the words are simply solid. */
+  .outline {
+    color: transparent;
+    -webkit-text-stroke: 0;
+  }
+
+  .stage {
+    min-height: auto;
+    padding-block: var(--space-8) 0;
+  }
+}

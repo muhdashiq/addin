@@ -1,0 +1,59 @@
+/*
+ * The "2010" easter egg. Every world collapses into one black Gingerbread phone screen.
+ * Only tokens and elements are touched, so no component has to know this skin exists.
+ */
+
+html[data-skin='retro'] {
+  --w-paper: #0b0b0b;
+  --w-hinge: #0b0b0b;
+  --w-dusk: #0b0b0b;
+  --w-screen: #0b0b0b;
+  --w-night: #0b0b0b;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: 'Droid Sans', Verdana, Tahoma, Geneva, sans-serif;
+  --grain-opacity: 0;
+}
+
+html[data-skin='retro'],
+html[data-skin='retro'] [data-world] {
+  --surface: #0b0b0b;
+  --surface-raised: #1d1d1d;
+  --text: #f2f2f2;
+  --text-muted: #c4c4c4;
+  --accent: #a4c639;
+  --accent-2: #ff9900;
+  --on-accent: #0b0b0b;
+  --rule: #4a4a4a;
+  --rule-strong: #a4c639;
+  --focus: #ff9900;
+  --grid: transparent;
+  --net-dim: #3a3a3a;
+  --net-lit: #a4c639;
+  --net-lit-2: #ff9900;
+  --net-line: #a4c639;
+  --net-blend: add;
+}
+
+html[data-skin='retro'],
+html[data-skin='retro'] [data-era] {
+  --display-axes: normal;
+  --btn-bg: linear-gradient(#fbfbfb 0%, #e6e6e6 47%, #cfcfcf 53%, #e4e4e4 100%);
+  --btn-bg-active: linear-gradient(#ffc14d 0%, #ff9900 50%, #f08c00 51%, #ffb733 100%);
+  --btn-fg: #111111;
+  --btn-fg-active: #111111;
+  --btn-border: 1px solid #000000;
+  --btn-radius: 6px;
+  --btn-shadow: inset 0 1px 0 #ffffff, 0 2px 0 #000000;
+  --btn-weight: 700;
+}
+
+html[data-skin='retro'] h1,
+html[data-skin='retro'] h2,
+html[data-skin='retro'] h3 {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+html[data-skin='retro'] a {
+  color: #a4c639;
+}

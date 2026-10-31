@@ -1,0 +1,14 @@
+/* The padding/negative margin pair gives descenders room inside the reveal mask. */
+.word {
+  display: inline-block;
+  overflow: clip;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+  padding-right: 0.02em;
+  white-space: pre;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform;
+}

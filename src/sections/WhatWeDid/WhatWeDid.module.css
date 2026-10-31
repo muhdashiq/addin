@@ -1,0 +1,74 @@
+.blocks {
+  border-block-start: 1px solid var(--rule-strong);
+}
+
+/* Rows, not cards: this is a list of what happened, and each entry deserves the full width. */
+.block {
+  display: grid;
+  grid-template-columns: clamp(4rem, 8vw, 7rem) minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3) clamp(1.25rem, 4vw, 4rem);
+  padding-block: clamp(1.5rem, 3.5vw, 3rem);
+  border-block-end: 1px solid var(--rule-strong);
+}
+
+.icon {
+  color: var(--accent);
+}
+
+.icon svg {
+  width: 100%;
+  height: auto;
+}
+
+.block h3 {
+  font-size: var(--fs-h3);
+}
+
+.block p {
+  max-width: var(--measure);
+  color: var(--text-muted);
+}
+
+.stats {
+  margin-block-start: var(--space-7);
+}
+
+.statList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6) clamp(2rem, 6vw, 6rem);
+  margin: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  max-width: 16rem;
+}
+
+.stat dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--accent);
+}
+
+.stat dt {
+  margin-block-start: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 799.98px) {
+  .block {
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+  }
+
+  .block p {
+    grid-column: 2;
+  }
+}

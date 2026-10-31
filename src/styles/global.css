@@ -1,0 +1,198 @@
+@font-face {
+  /* Georgia scaled to Fraunces' display width, so headlines keep their line breaks at the swap. */
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia');
+  size-adjust: 78%;
+  ascent-override: 92%;
+  descent-override: 24%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--surface);
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+html[data-booting] {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+/*
+ * Sections can start an animation partly off-screen. Clipping here, not on body, is deliberate:
+ * body's overflow moves up to the viewport, and phones still widen the layout to fit what overflows.
+ * clip also keeps this from becoming a scroll container, so sticky and pinning work as normal.
+ */
+main {
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-variation-settings: var(--display-axes);
+  font-weight: 560;
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+svg {
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+[data-world] {
+  color: var(--text);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: calc(var(--z-preloader) + 1);
+  padding: var(--space-2) var(--space-4);
+  background: var(--c-ink);
+  color: var(--c-paper);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+  outline-color: var(--c-husk);
+}
+
+/* Line-art strokes share one convention: pathLength="1" plus a dash that GSAP can draw on. */
+[data-stroke] {
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* Film grain: one small tile, so it costs a single raster, not a per-frame filter. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .12 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* The custom cursor replaces the native one, except where a caret is more useful. */
+html[data-custom-cursor],
+html[data-custom-cursor] a,
+html[data-custom-cursor] button,
+html[data-custom-cursor] [role='slider'],
+html[data-custom-cursor] [data-cursor] {
+  cursor: none;
+}
+
+html[data-custom-cursor] input {
+  cursor: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

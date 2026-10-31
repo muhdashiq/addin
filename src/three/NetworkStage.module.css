@@ -1,0 +1,6 @@
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+}

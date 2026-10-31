@@ -1,0 +1,73 @@
+.stage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  min-height: 25rem;
+  width: 100%;
+  overflow: clip;
+  border: 1px solid var(--rule-strong);
+  touch-action: pan-y;
+  user-select: none;
+  container-type: inline-size;
+  background: var(--surface-raised);
+}
+
+.before,
+.after {
+  position: absolute;
+  inset: 0;
+}
+
+.before {
+  clip-path: inset(0 calc(100% - var(--divider)) 0 0);
+}
+
+.thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--divider);
+  width: 3px;
+  translate: -50% 0;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 35%);
+}
+
+.thumb:focus-visible {
+  outline: 3px solid #ffb733;
+  outline-offset: 1px;
+}
+
+.grip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1b1b1f;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 40%);
+}
+
+.tagBefore,
+.tagAfter {
+  position: absolute;
+  top: var(--space-3);
+  padding: 0.15em 0.65em;
+  background: #1b1b1f;
+  color: #ffffff;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.tagBefore {
+  left: var(--space-3);
+}
+
+.tagAfter {
+  right: var(--space-3);
+}

@@ -1,0 +1,115 @@
+.timeline {
+  padding-block-start: var(--space-7);
+}
+
+.rail {
+  --rail: clamp(0.75rem, 6vw, 6rem);
+  position: relative;
+  max-width: 62rem;
+}
+
+.list {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  padding-inline-start: calc(var(--rail) + clamp(1.25rem, 3vw, 3rem));
+}
+
+.lineTrack {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--rail);
+  width: 3px;
+  translate: -50% 0;
+  background: var(--rule);
+}
+
+.line {
+  height: 100%;
+  background: linear-gradient(var(--accent), var(--accent-2));
+  transform-origin: top;
+}
+
+.milestone {
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  top: 0.65em;
+  left: calc(clamp(1.25rem, 3vw, 3rem) * -1);
+  width: 1.125rem;
+  height: 1.125rem;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--surface);
+}
+
+.date {
+  margin-block-end: var(--space-1);
+  color: var(--accent-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.milestone h3 {
+  font-size: var(--fs-h3);
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: start;
+  font-variation-settings: inherit;
+}
+
+.chevron {
+  flex: none;
+  color: var(--accent);
+  transition: rotate 300ms var(--ease-out);
+}
+
+.trigger[aria-expanded='true'] .chevron {
+  rotate: 180deg;
+}
+
+/* Animating grid rows lets the card open to its natural height without measuring it. */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows 360ms var(--ease-out),
+    visibility 360ms;
+  visibility: hidden;
+}
+
+.panel[data-open='true'] {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+
+.panelClip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.detail {
+  max-width: var(--measure);
+  margin-block-start: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface-raised);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  color: var(--text-muted);
+}

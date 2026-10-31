@@ -1,0 +1,62 @@
+.hero {
+  --shell-pad-end: clamp(1.5rem, 4vw, 3.5rem);
+  display: grid;
+  align-items: end;
+  min-height: 100svh;
+  overflow: clip;
+}
+
+.copy {
+  position: relative;
+  padding-block-start: calc(var(--nav-height) + var(--space-6));
+}
+
+.headline {
+  max-width: 13.5ch;
+  font-size: var(--fs-display);
+  line-height: 0.97;
+  letter-spacing: -0.022em;
+  font-weight: 600;
+  text-wrap: wrap;
+}
+
+.subline {
+  max-width: 44ch;
+  margin-block-start: var(--space-5);
+  font-size: var(--fs-lead);
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-block-start: var(--space-5);
+}
+
+.scroll {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+.scrollTrack {
+  position: relative;
+  display: block;
+  width: 2px;
+  height: 3.25rem;
+  overflow: clip;
+  background: var(--rule);
+}
+
+.scrollDot {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 40%;
+  background: var(--accent);
+}
